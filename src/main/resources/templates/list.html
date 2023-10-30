@@ -20,11 +20,16 @@
   <tr>
     <!-- TODO #2: Complete the View Jobs By Category Table. -->
 
-    <td></td> <!-- Feel free to remove or modify this element if necessary. -->
+<!--    <td></td> &lt;!&ndash; Feel free to remove or modify this element if necessary. &ndash;&gt;-->
 
+<!--    //category = one key/value pair from tableChoices-->
     <td th:each="category : ${tableChoices}">
       <ul>
+<!--     //item = one entry from the stored ArrayList-->
         <li th:each="item : ${category.value}">
+<!--          //Thymeleaf automatically generates query parameters for the URL
+                sets column to ${category.key}(name of category) and value to ${item}(Employer or Location, or etc. objects) (see above)
+                  sends info to listJobsByColumnAndValue in ListController which will send it to list-jobs.html-->
           <a th:href="@{/list/jobs(column=${category.key},value=${item})}" th:text="${item}"></a>
         </li>
       </ul>
